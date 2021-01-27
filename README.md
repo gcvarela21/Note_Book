@@ -6,7 +6,10 @@ Utilizing [Node Express'](https://expressjs.com/en/5x/api.html) Live Server capa
 
 [Walkthrough Video](https://drive.google.com/file/d/1NvXM_c-kaN07UQu0YlbOG9TerAwKuY_L/view)
 
-![]()
+![Sample Site Image 1](https://github.com/gcvarela21/Note_Book/blob/main/hw_details/4_notes3.png?raw=true)
+![Sample Site Image 2](https://github.com/gcvarela21/Note_Book/blob/main/hw_details/3_notes2.png?raw=true)
+![Sample Site Image 3](https://github.com/gcvarela21/Note_Book/blob/main/hw_details/2_notes1.png?raw=true)
+![Sample Site Image 4](https://github.com/gcvarela21/Note_Book/blob/main/hw_details/1_index.png?raw=true)
 
 ## Table of Contents
 
@@ -82,25 +85,23 @@ node server.js
 
 Once your dependencies are installed you are ready to link your repository to Heroku. Rember to include your node modules folder when setting up Heroku. There will be errors if you miss this by setting up a git ignore file that includes the modules folder.
 
+![Sample GIF](https://github.com/gcvarela21/Note_Book/blob/main/hw_details/noteTaker.gif?raw=true)
+
 You can find my project repository [Here](https://github.com/gcvarela21/Team_Profile_Machine/)
 You can find my deployed project [Here](https://note-book-gcvarela21.herokuapp.com/)
 
 ### License
 
 This project is licensed under:
-MIT
+**MIT**
 
 ### Contributing
 
-There are no contributions at this time
+There are no contributions at this time.
 
 ### Tests
 
-In order to test open the console and run the following:
-
-```javascript
-npm run test
-```
+There are no tests available at this time.
 
 ### Questions
 
