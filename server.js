@@ -49,7 +49,7 @@ app.get("/api/notes", (req, res) => {
 });
 
 // post method establishing that the api/notes is linked to the db.json file for future reading and writing. if something is wrong send and error. parse the reponse from the data pulled from the db file. create a for loop
-app.post("api/notes", (req, res) => {
+app.post("/api/notes", (req, res) => {
   fs.readFile(path.join(__dirname, "/db/db.json"), "utf8", (err, data) => {
     if (err) throw err;
 
@@ -74,7 +74,7 @@ app.post("api/notes", (req, res) => {
 
 
 // post method establishing that the api/notes is linked to the db.json file for future reading and writing. if something is wrong send and error. parse the reponse from the data pulled from the db file
-app.post("api/notes", (req, res) => {
+app.post("/api/notes", (req, res) => {
   fs.readFile(path.join(__dirname, "/db/db.json"), "utf8", (err, data) => {
     if (err) throw err;
     const dataBase = JSON.parse(data); 
@@ -95,7 +95,7 @@ app.post("api/notes", (req, res) => {
   });
 });
 
-app.delete("api/notes/:id", (req, res) => {
+app.delete("/api/notes/:id", (req, res) => {
     fs.readFile(path.join(__dirname, "/db/db.json"), "utf8", (err, data) => {
     if (err) throw err;
     
