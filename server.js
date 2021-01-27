@@ -30,12 +30,12 @@ const newNoteList = [];
 //// start here in the public folder
 app.use(express.static('public'));
 
-//// DEFAULT TO HOME by startign at the directory and ending at the index.html 
-app.get("/", (req, res) => {
+//// DEFAULT TO HOME by startign at the directory and ending at the index.html  (navigational purposes)
+app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 
-//// Go to notes by startind at the directory and ending at the notes.html 
+//// Go to notes by startind at the directory and ending at the notes.html (navigational purposes)
 app.get("/notes", (req, res) => {
   res.sendFile(path.join(__dirname, "/public/notes.html"));
 });
@@ -52,7 +52,8 @@ app.get("/api/notes", (req, res) => {
 app.post("api/notes", (req, res) => {
   fs.readFile(path.join(__dirname, "/db/db.json"), "utf8", (err, data) => {
     if (err) throw err;
-      
+
+    const dataBase = JSON.parse(data);  
     dataBase.push(req.body);
 
     for (let i = 0; i < dataBase.length; i++) {
