@@ -31,18 +31,18 @@ const newNoteList = [];
 app.use(express.static('public'));
 
 //// DEFAULT TO HOME by startign at the directory and ending at the index.html  (navigational purposes)
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "/public/index.html"));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public/index.html"));
 });
 
 //// Go to notes by startind at the directory and ending at the notes.html (navigational purposes)
 app.get("/notes", (req, res) => {
-  res.sendFile(path.join(__dirname, "/public/notes.html"));
+  res.sendFile(path.join(__dirname, "public/notes.html"));
 });
 
 // get method establishing that the api/notes is linked to the db.json file for future reading and writing. if something is wrong send an error, then parse the reponse from the data pulled from the db file
 app.get("/api/notes", (req, res) => {
-  fs.readFile(path.join(__dirname, "/db/db.json"), "utf8", (err, data) => {
+  fs.readFile(path.join(__dirname, "db/db.json"), "utf8", (err, data) => {
     if (err) throw err;
     res.json(JSON.parse(data));
   });
@@ -50,7 +50,7 @@ app.get("/api/notes", (req, res) => {
 
 // post method establishing that the api/notes is linked to the db.json file for future reading and writing. if something is wrong send and error. parse the reponse from the data pulled from the db file. create a for loop
 app.post("/api/notes", (req, res) => {
-  fs.readFile(path.join(__dirname, "/db/db.json"), "utf8", (err, data) => {
+  fs.readFile(path.join(__dirname, "db/db.json"), "utf8", (err, data) => {
     if (err) throw err;
 
     const dataBase = JSON.parse(data);  
@@ -64,7 +64,7 @@ app.post("/api/notes", (req, res) => {
       };
       newNoteList.push(newNote);
     }
-    fs.writeFile(path.join(__dirname, "/db/db.json"), JSON.stringify(newNoteList, null, 2), (err) => {
+    fs.writeFile(path.join(__dirname, "db/db.json"), JSON.stringify(newNoteList, null, 2), (err) => {
       if (err) throw err;
       res.json(req.body);
     });
@@ -75,7 +75,7 @@ app.post("/api/notes", (req, res) => {
 
 // post method establishing that the api/notes is linked to the db.json file for future reading and writing. if something is wrong send and error. parse the reponse from the data pulled from the db file
 app.post("/api/notes", (req, res) => {
-  fs.readFile(path.join(__dirname, "/db/db.json"), "utf8", (err, data) => {
+  fs.readFile(path.join(__dirname, "db/db.json"), "utf8", (err, data) => {
     if (err) throw err;
     const dataBase = JSON.parse(data); 
     dataBase.push(req.body);
@@ -88,7 +88,7 @@ app.post("/api/notes", (req, res) => {
       };
       newNoteList.push(newNote);
     }
-    fs.writeFile(path.join(__dirname, "/db/db.json"), JSON.stringify(newNoteList, null, 2), (err) => {
+    fs.writeFile(path.join(__dirname, "db/db.json"), JSON.stringify(newNoteList, null, 2), (err) => {
       if (err) throw err;
       res.json(req.body);
     });
@@ -96,7 +96,7 @@ app.post("/api/notes", (req, res) => {
 });
 
 app.delete("/api/notes/:id", (req, res) => {
-    fs.readFile(path.join(__dirname, "/db/db.json"), "utf8", (err, data) => {
+    fs.readFile(path.join(__dirname, "db/db.json"), "utf8", (err, data) => {
     if (err) throw err;
     
     const id = parseInt(req.params.id);
@@ -114,7 +114,7 @@ app.delete("/api/notes/:id", (req, res) => {
       }
     }
 
-    fs.writeFile(path.join(__dirname, "/db/db.json"), JSON.stringify(newNoteList, null, 2), (err) => {
+    fs.writeFile(path.join(__dirname, "db/db.json"), JSON.stringify(newNoteList, null, 2), (err) => {
       if (err) throw err;
       res.json(req.body);
     });
