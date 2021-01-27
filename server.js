@@ -49,6 +49,31 @@ app.get("/api/notes", (req, res) => {
   });
 });
 
+// post method establishing that the api/notes is linked to the db.json file for future reading and writing. if something is wrong send and error. parse the reponse from the data pulled from the db file. create a for loop
+app.post("/api/notes", (req, res) => {
+  fs.readFile(path.join(__dirname, "/db/db.json"), "utf8", (err, data) => {
+    if (err) throw err;
+      
+    dataBase.push(req.body);
+
+    for (let i = 0; i < dataBase.length; i++) {
+      const newNote = {
+        title: dataBase[i].title,
+        text: dataBase[i].text,
+        id: i+1
+      };
+      newNoteList.push(newNote);
+    }
+    fs.writeFile(path.join(__dirname, "/db/db.json"), JSON.stringify(newNoteList, null, 2), (err) => {
+      if (err) throw err;
+      res.json(req.body);
+    });
+  });
+  console.log(newNoteList);
+});
+
+
+
 
 
 
