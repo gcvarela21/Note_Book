@@ -32,8 +32,13 @@ const id = parseInt(req.params.id);
 app.use(express.static('public'));
 
 //// DEFAULT TO HOME by startign at the directory and ending at the index.html 
-app.get("/", (req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "/public/index.html"));
+});
+
+//// Go to notes by startind at the directory and ending at the index.html 
+app.get("/notes", (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/notes.html"));
 });
 
 
