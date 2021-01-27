@@ -149,3 +149,19 @@ $noteText.on("keyup", handleRenderSaveBtn);
 
 // Gets and renders the initial list of notes
 getAndRenderNotes();
+
+
+
+
+
+
+
+//////////////////////////////////////////////
+
+/// getting an error on the live heroku site not sure why
+
+///jQuery.Deferred exception: notes.forEach is not a function //TypeError: notes.forEach is not a function
+//at Object.renderNoteList (https://note-book-gcvarela21.herokuapp.com/js/index.js:130:9)
+//at l (https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1///jquery.min.js:2:29375)
+//at c (https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js:2:29677) undefined
+//w.Deferred.exceptionHook @ jquery.min.js:2
