@@ -31,7 +31,7 @@ const newNoteList = [];
 app.use(express.static('public'));
 
 //// DEFAULT TO HOME by startign at the directory and ending at the index.html  (navigational purposes)
-app.get("*", (req, res) => {
+app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 
