@@ -24,8 +24,7 @@ app.listen(PORT, function(error) {
 
 // My Global Empty Array 
 const newNoteList = [];
-const dataBase = JSON.parse(data);
-const id = parseInt(req.params.id);
+
 
 
 //// start here in the public folder
@@ -70,6 +69,55 @@ app.post("/api/notes", (req, res) => {
     });
   });
   console.log(newNoteList);
+});
+
+
+// post method establishing that the api/notes is linked to the db.json file for future reading and writing. if something is wrong send and error. parse the reponse from the data pulled from the db file
+app.post("/api/notes", (req, res) => {
+  fs.readFile(path.join(__dirname, "/db/db.json"), "utf8", (err, data) => {
+    if (err) throw err;
+    const dataBase = JSON.parse(data); 
+    dataBase.push(req.body);
+
+    for (let i = 0; i < dataBase.length; i++) {
+      const newNote = {
+        title: dataBase[i].title,
+        text: dataBase[i].text,
+        id: i+1
+      };
+      newNoteList.push(newNote);
+    }
+    fs.writeFile(path.join(__dirname, "/db/db.json"), JSON.stringify(newNoteList, null, 2), (err) => {
+      if (err) throw err;
+      res.json(req.body);
+    });
+  });
+});
+
+app.delete("/api/notes/:id", (req, res) => {
+    fs.readFile(path.join(__dirname, "/db/db.json"), "utf8", (err, data) => {
+    if (err) throw err;
+    
+    const id = parseInt(req.params.id);
+    const dataBase = JSON.parse(data);   
+    
+    for (let i = 0; i < dataBase.length; i++) {
+      if (i !== id) {
+        const newNote = {
+          title: dataBase[i].title,
+          text: dataBase[i].text,
+          id: newNoteList.length
+        };
+
+        newNoteList.push(newNote);
+      }
+    }
+
+    fs.writeFile(path.join(__dirname, "/db/db.json"), JSON.stringify(newNoteList, null, 2), (err) => {
+      if (err) throw err;
+      res.json(req.body);
+    });
+  });
 });
 
 

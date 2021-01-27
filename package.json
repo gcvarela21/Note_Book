@@ -1,14 +1,24 @@
 {
-  "name": "note-book",
+  "name": "Note_Book",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Web Based Note Taker Application",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gcvarela21/Note_Book.git"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gcvarela21/Note_Book/issues"
+  },
+  "homepage": "https://github.com/gcvarela21/Note_Book#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.17.1"
   }
 }
