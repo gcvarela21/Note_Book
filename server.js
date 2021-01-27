@@ -5,7 +5,7 @@ const path = require('path');
 
 // Initializing the express app
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 // Lets setup data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -100,7 +100,7 @@ app.delete("/api/notes/:id", (req, res) => {
     
     const id = parseInt(req.params.id);
     const dataBase = JSON.parse(data);   
-    
+    npm 
     for (let i = 0; i < dataBase.length; i++) {
       if (i !== id) {
         const newNote = {
