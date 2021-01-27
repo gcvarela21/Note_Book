@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/gcvarela21/Note_Book#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "store": "^2.0.12",
+    "uuid": "^8.3.2"
   }
 }

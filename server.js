@@ -5,7 +5,7 @@ const path = require('path');
 
 // Initializing the express app
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 // Lets setup data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -31,17 +31,17 @@ const newNoteList = [];
 app.use(express.static('public'));
 
 //// DEFAULT TO HOME by startign at the directory and ending at the index.html 
-app.get("*", (req, res) => {
+app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 
 //// Go to notes by startind at the directory and ending at the notes.html 
-app.get("notes", (req, res) => {
+app.get("/notes", (req, res) => {
   res.sendFile(path.join(__dirname, "/public/notes.html"));
 });
 
 // get method establishing that the api/notes is linked to the db.json file for future reading and writing. if something is wrong send an error, then parse the reponse from the data pulled from the db file
-app.get("api/notes", (req, res) => {
+app.get("/api/notes", (req, res) => {
   fs.readFile(path.join(__dirname, "/db/db.json"), "utf8", (err, data) => {
     if (err) throw err;
     res.json(JSON.parse(data));
