@@ -36,11 +36,18 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 
-//// Go to notes by startind at the directory and ending at the index.html 
+//// Go to notes by startind at the directory and ending at the notes.html 
 app.get("/notes", (req, res) => {
   res.sendFile(path.join(__dirname, "/public/notes.html"));
 });
 
+// get method establishing that the api/notes is linked to the db.json file for future reading and writing. if something is wrong send an error, then parse the reponse from the data pulled from the db file
+app.get("/api/notes", (req, res) => {
+  fs.readFile(path.join(__dirname, "/db/db.json"), "utf8", (err, data) => {
+    if (err) throw err;
+    res.json(JSON.parse(data));
+  });
+});
 
 
 
